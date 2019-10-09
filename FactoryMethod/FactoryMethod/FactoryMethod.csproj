@@ -43,8 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="products\AppleMacBook.cs" />
+    <Compile Include="creators\NoteBook.cs" />
+    <Compile Include="creators\Phone.cs" />
+    <Compile Include="products\XiaomiNoteBook.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="products\Iphone.cs" />
+    <Compile Include="products\Xiaomi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Store.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
