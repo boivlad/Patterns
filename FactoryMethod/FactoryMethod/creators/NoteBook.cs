@@ -4,7 +4,7 @@ namespace FactoryMethod.creators
 {
     class Notebook : Store
     {
-        public override Product getProduct(string Name)
+        public Product getProduct(string Name)
         {
             if (Name == "Apple MacBook")
             {

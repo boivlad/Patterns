@@ -1,7 +1,7 @@
 ﻿namespace FactoryMethod
 {
-    abstract class Store
+    public interface Store
     {
-        public abstract Product getProduct(string Name);
+        Product getProduct(string Name);
     }
 }

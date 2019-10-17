@@ -5,7 +5,7 @@ namespace FactoryMethod.creators
 {
     class Phone : Store
     {
-        public override Product getProduct(string Name)
+        public Product getProduct(string Name)
         {
             if (Name == "Iphone")
             {
