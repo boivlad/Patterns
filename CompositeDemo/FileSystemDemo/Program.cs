@@ -13,16 +13,15 @@ namespace FileSystemDemo
             File f1 = new File(3);
             File f2 = new File(4);
             File f3 = new File(5);
-            Console.Write(f1.Size());
-            Console.Write(f2.Size());
-            Console.WriteLine(f3.Size());
+            Console.WriteLine("F1 - {0}, F2 - {1}, F3 - {2}", f1.Size(), f2.Size(), f3.Size());
             Folder fl1 = new Folder();
             fl1.Add(f1);
             fl1.Add(f2);
             fl1.Add(f3);
-            Console.WriteLine(fl1.Size());
+            Console.WriteLine("Size Folder1 = {0}", fl1.Size());
             fl1.Remove(f1);
-            Console.WriteLine(fl1.Size());
+            Console.WriteLine("File1 was deleted!");
+            Console.WriteLine("Size Folder1 = {0}", fl1.Size());
             Console.ReadKey();
         }
     }
