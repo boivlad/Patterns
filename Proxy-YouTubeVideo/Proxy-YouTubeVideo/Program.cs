@@ -12,16 +12,18 @@ namespace Proxy_YouTubeVideo
         {
             ThirdPartyYoutubeClass youtubeService = new ThirdPartyYoutubeClass();
             CachedYoutubeClass youtubeProxy = new CachedYoutubeClass(youtubeService);
-            YouTubeManager client = new YouTubeManager(youtubeProxy);
-
+            int idVideo = 3;
             Console.WriteLine("Имитация нажатия кнопки загрузки и воспроизведения видео с YouTube(Первое открытие)");
-            client.ReactOnUserInput(2);
+            Console.WriteLine(youtubeProxy.getVideoInfo(idVideo));
+            Console.WriteLine(youtubeProxy.listVideos());
             Console.WriteLine("///////////////////");
             Console.WriteLine("Имитация нажатия кнопки загрузки и воспроизведения видео с YouTube(Повторное открытие)");
-            client.ReactOnUserInput(2);
+            Console.WriteLine(youtubeProxy.getVideoInfo(idVideo));
+            Console.WriteLine(youtubeProxy.listVideos());
             Console.WriteLine("///////////////////");
             Console.WriteLine("Имитация нажатия кнопки загрузки и воспроизведения видео с YouTube(Повторное открытие)");
-            client.ReactOnUserInput(2);
+            Console.WriteLine(youtubeProxy.getVideoInfo(idVideo));
+            Console.WriteLine(youtubeProxy.listVideos());
 
             Console.ReadKey();
         }
