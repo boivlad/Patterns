@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy-YouTubeVideo", "Proxy-YouTubeVideo\Proxy-YouTubeVideo.csproj", "{5EC6FBBC-2234-45F4-AE57-3E2F08E05851}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy_Palindrome-Arrays", "Proxy_Palindrome-Arrays\Proxy_Palindrome-Arrays.csproj", "{7A44026C-18EA-4042-B103-36DE9B2991B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5EC6FBBC-2234-45F4-AE57-3E2F08E05851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EC6FBBC-2234-45F4-AE57-3E2F08E05851}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EC6FBBC-2234-45F4-AE57-3E2F08E05851}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EC6FBBC-2234-45F4-AE57-3E2F08E05851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A44026C-18EA-4042-B103-36DE9B2991B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A44026C-18EA-4042-B103-36DE9B2991B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A44026C-18EA-4042-B103-36DE9B2991B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A44026C-18EA-4042-B103-36DE9B2991B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C48B83E1-DE90-4657-A9BF-2FE5974FF759}
+		SolutionGuid = {7B58A58C-590F-4F0D-9628-D52EA716AA5D}
 	EndGlobalSection
 EndGlobal

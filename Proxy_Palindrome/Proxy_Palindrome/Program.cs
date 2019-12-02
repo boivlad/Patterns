@@ -61,16 +61,16 @@ namespace Proxy_Palindrome
     public bool IsPalindrom(string word)
     {
       word = word.ToLower();
-      foreach( WordReverse wordReverse in Palindrome)
+      foreach (WordReverse wordReverse in Palindrome)
       {
-        if ( wordReverse.GetWord() == word)
+        if (wordReverse.GetWord() == word)
         {
           Console.WriteLine("Совпадение cлова '{0}' найдено в Кэше ", word);
           return wordReverse.IsPalindrom();
         }
       }
       bool ispalindrom = realClass.IsPalindrom(word);
-      Palindrome.Add (new WordReverse(word, ispalindrom));
+      Palindrome.Add(new WordReverse(word, ispalindrom));
       return ispalindrom;
 
     }
