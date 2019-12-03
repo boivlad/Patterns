@@ -24,24 +24,6 @@ namespace Proxy_Palindrome_Arrays
   {
     bool isReverse(string normalString);
   }
-  struct StringReverse
-  {
-    private string normalString;
-    private bool reverse;
-    public StringReverse(string normalString, bool reverse)
-    {
-      this.normalString = normalString;
-      this.reverse = reverse;
-    }
-    public string getString()
-    {
-      return this.normalString;
-    }
-    public bool isReverse()
-    {
-      return reverse;
-    }
-  }
   class RealReverseClass : ReverseString
   {
     public bool isReverse(string normalString)

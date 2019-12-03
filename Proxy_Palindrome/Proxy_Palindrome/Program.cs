@@ -10,15 +10,47 @@ namespace Proxy_Palindrome
     {
       PalindromeClassLib PalindromeClass = new RealPalindromeClass();
       PalindromeClassLib PalindromeProxy = new CachedPalindromeClass(PalindromeClass);
-      Console.WriteLine("Ответ: " + PalindromeProxy.IsPalindrom("ШалАш"));
-      Console.WriteLine("Ответ: " + PalindromeProxy.IsPalindrom("шалАш"));
-      Console.WriteLine("Ответ: " + PalindromeProxy.IsPalindrom("Арбуз"));
-      Console.WriteLine("Ответ: " + PalindromeProxy.IsPalindrom("шалАш"));
-      Console.WriteLine("Ответ: " + PalindromeProxy.IsPalindrom("Арбуз"));
+
+      Console.Write("Введите кол-во вводимый строк: ");
+      int n = Convert.ToInt32(Console.ReadLine());
+      if(n > 0)
+      {
+        for (int i = 0; i < n; i++)
+        {
+          Console.Write("Введите проверяемую строку: ");
+          Console.WriteLine("Ответ: " + PalindromeProxy.IsPalindrom(Console.ReadLine()));
+        }
+      }
+      else
+      {
+        TestData(PalindromeProxy);
+      }   
       Console.ReadKey();
     }
+
+    private static void TestData(PalindromeClassLib PalindromeProxy)
+    {
+      string[] testString = new string[] {
+        "шалаш",
+        "шАлаш",
+        "Арбуз",
+        "Он в аду давно",
+        "Коту скоро сорок суток",
+        "Он в аду давно",
+        "Коту скоро сорок суток",
+        "шалАш",
+        "Арбуз",
+        "А роза упала на лапу Азора",
+      };
+      for (int i = 0; i < testString.Length; i++)
+      {
+        Console.WriteLine("Ответ: " + PalindromeProxy.IsPalindrom(testString[i]));
+      }
+    }
   }
+#pragma warning disable IDE1006 // Стили именования
   interface PalindromeClassLib
+#pragma warning restore IDE1006 // Стили именования
   {
     bool IsPalindrom(string word);
   }
@@ -45,6 +77,7 @@ namespace Proxy_Palindrome
     public bool IsPalindrom(string word)
     {
       Console.WriteLine("Выполняется проверка слова '{0}'", word);
+      word = word.ToLower().Replace(" ", "");
       return (new string(word.ToCharArray().Reverse().ToArray()) == word);
     }
   }
@@ -60,7 +93,6 @@ namespace Proxy_Palindrome
     }
     public bool IsPalindrom(string word)
     {
-      word = word.ToLower();
       foreach (WordReverse wordReverse in Palindrome)
       {
         if (wordReverse.GetWord() == word)
