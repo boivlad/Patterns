@@ -48,9 +48,7 @@ namespace Proxy_Palindrome
       }
     }
   }
-#pragma warning disable IDE1006 // Стили именования
   interface PalindromeClassLib
-#pragma warning restore IDE1006 // Стили именования
   {
     bool IsPalindrom(string word);
   }
