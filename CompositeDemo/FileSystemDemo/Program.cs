@@ -6,60 +6,87 @@ using System.Threading.Tasks;
 
 namespace FileSystemDemo
 {
-    class Program
+  class Program
+  {
+    static void Main()
     {
-        static void Main(string[] args)
-        {
-            File f1 = new File(3);
-            File f2 = new File(4);
-            File f3 = new File(5);
-            Console.WriteLine("F1 - {0}, F2 - {1}, F3 - {2}", f1.Size(), f2.Size(), f3.Size());
-            Folder fl1 = new Folder();
-            fl1.Add(f1);
-            fl1.Add(f2);
-            fl1.Add(f3);
-            Console.WriteLine("Size Folder1 = {0}", fl1.Size());
-            fl1.Remove(f1);
-            Console.WriteLine("File1 was deleted!");
-            Console.WriteLine("Size Folder1 = {0}", fl1.Size());
-            Console.ReadKey();
-        }
+      Operand op1 = new Operand(3);
+      Operand op2 = new Operand(4);
+      Operand op3 = new Operand(5);
+      Console.WriteLine("Operand-1 - {0}, Operand-2 - {1}, Operand-3 - {2}", op1.Result(), op2.Result(), op3.Result());
+      Operation oper1 = new Operation('+');
+      Operation oper2 = new Operation('*');
+      
+      oper1.Add(op1);
+      oper1.Add(op2);
+      oper1.Add(op3);
+      oper2.Add(op1);
+      oper2.Add(op2);
+      oper1.Add(oper2);
+      Console.WriteLine("Result Operation 1 = {0}", oper1.Result());
+      Console.WriteLine("Result Operation 2 = {0}", oper2.Result());
+      oper1.Remove(op1);
+      Console.WriteLine("Operand 1 was deleted!");
+      Console.WriteLine("Result Operation 1 = {0}", oper1.Result());
+      Console.ReadKey();
     }
-    abstract class FSElement
-    {
-        public abstract int Size();
- 
+  }
+  abstract class Arithmetic
+  {
+    public abstract int Result();
+  }
+  class Operand:Arithmetic
+  {
+    int result;
+    public Operand(int s) { result = s; }
+    public override int Result() {
+        return result;
     }
-    class File:FSElement
-    {
-        int size;
-        public File(int s) { size = s; }
-        public override int Size() {
-            return size; }
 
-    }
-    class Folder:FSElement
+  }
+  class Operation:Arithmetic
+  {
+    private List<Arithmetic> elements;
+    private char operation;
+    public Operation(char operation)
     {
-        private List<FSElement> elements;
-        public Folder()
-        {
-            elements = new List<FSElement>();
-        }
-        public void Add(FSElement fse)
-        {
-            elements.Add(fse);
-        }
-        public void Remove(FSElement fse)
-        {
-            elements.Remove(fse);
-        }
-        public override int Size()
-        {
-            int s = 0;
-            foreach (FSElement fse in elements)
-                s += fse.Size();
-            return s;
-        }
-
+        elements = new List<Arithmetic>();
+        this.operation = operation;
     }
+    public void Add(Arithmetic fse)
+    {
+        elements.Add(fse);
+    }
+    public void Remove(Arithmetic fse)
+    {
+      elements.Remove(fse);
+    }
+    public override int Result()
+    {
+      int s = 1;
+      if (operation == '+' || operation == '-')
+        s = 0;
+      switch (operation)
+      {
+        case '+':
+          foreach (Arithmetic fse in elements)
+            s += fse.Result();
+          break;
+        case '-':
+          foreach (Arithmetic fse in elements)
+            s -= fse.Result();
+          break;
+        case '*':
+          foreach (Arithmetic fse in elements)
+            s *= fse.Result();
+          break;
+        case '/':
+          foreach (Arithmetic fse in elements)
+            s /= fse.Result();
+          break;
+          
+      }
+      return s;
+    }
+  }
 }
