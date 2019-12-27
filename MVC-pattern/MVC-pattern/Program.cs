@@ -33,7 +33,9 @@ namespace MVC_pattern
   {
     static void Main(string[] args)
     {
-      View view = new View();
+      Model model = new Model();
+      Controller controller = new Controller(model);
+      View view = new View(controller);
       view.AddNewStudent("Владислав", 95);
       view.AddNewStudent("Павел", 97);
       view.GetRatingByName("Владислав");
@@ -84,65 +86,70 @@ namespace MVC_pattern
   public class Controller
   {
     public Model model;
-    public Controller()
+    public Controller(Model model)
     {
-      model = new Model();
+      this.model = model;
     }
-    public string NewStudent(string student, int rating)
+    public void NewStudent(string student, int rating)
     {
       Student newStudent = new Student(student, rating);
       if (model.AddStudent(newStudent))
       {
-        return "Пользователь " + student + " успешно добавлен";
+        notify("Пользователь " + student + " успешно добавлен");
+        return;
       }
-      return "Пользователь не добавлен!";
+      notify("Пользователь не добавлен!");
+      return;
     }
-    public string GetStudentRating(string name)
+    public void GetStudentRating(string name)
     {
       int rating = model.GetStudentsByName(name);
       if (rating >= 0)
       {
-        return "Оценка студента " + name  + " - " + rating + " баллов";
+        notify("Оценка студента " + name  + " - " + rating + " баллов");
+        return;
       }
-      return "Студент не найден!";
+      notify("Студент не найден!");
+      return;
     }
-    public string RemoveStudent(string name)
+    public void RemoveStudent(string name)
     {
       if (model.RemoveStudentByName(name))
       {
-        return "Студент " + name + " успешно исключён";
+        notify("Студент " + name + " успешно исключён");
+        return;
       }
-      return "Данный студент не найден, возможно он был исключён ранее";
+      notify("Данный студент не найден, возможно он был исключён ранее");
+      return;
+    }
+    public void notify(string text)
+    {
+      View.update(text);
     }
   }
   public class View
   {
     public Controller controller;
-    public View()
+    public View(Controller controller)
     {
-      controller = new Controller();
+      this.controller = controller;
     }
 
     public void AddNewStudent(string student, int rating)
-    {
-      Console.WriteLine(controller.NewStudent(student, rating));
+    { 
+      controller.NewStudent(student, rating);
     }
     public void GetRatingByName(string student)
     {
-      Console.WriteLine(controller.GetStudentRating(student));
+      controller.GetStudentRating(student);
     } 
     public void RemoveStudent(string student)
     {
-      Console.WriteLine(controller.RemoveStudent(student));
+      controller.RemoveStudent(student);
     }
-    public static void print(string message)
+    public static void update(string message)
     {
       Console.WriteLine(message);
     }
   }
-  /*TODO:
-   * Composite
-   * Observer
-   * Strategy
-  */
 }
